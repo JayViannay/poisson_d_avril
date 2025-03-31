@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Changement Officiel de Prénom - Gouvernement FR</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #aa0000;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 240px;
+        }
+
+        .decret {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .important {
+            color: #aa0000;
+            font-weight: bold;
+        }
+
+        .formulaire {
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #aa0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #880000;
+        }
+
+        .success-message {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="logo">
+            <img src="logo_republique_fr.png" alt="Logo République Française">
+        </div>
+        <h1>Notification Officielle de Changement de Prénom des Enfants</h1>
+        <p class="decret">Pour les enfants nés en 2018 &mdash; Décret n° 2025-NEMO-01-04</p>
+
+        <p>Madame, Monsieur, et Chers <strong>Enfants</strong>,</p>
+
+        <p>
+            Dans le cadre du <strong>Plan National d’Harmonisation des Prénoms pour les Enfants</strong>,
+            le gouvernement vous informe que les enfants nés en 2018 doivent choisir un nouveau prénom,
+            parmi une liste approuvée.
+        </p>
+
+        <p>
+            L’enfant concerné a jusqu’au <strong>2 avril à midi</strong> pour faire son choix.
+        </p>
+
+        <p>Voici la liste officielle des prénoms disponibles :</p>
+        <ul>
+            <li>Pétouillette</li>
+            <li>Dragonoisette</li>
+            <li>Lulu-Crampon</li>
+            <li>Saucibulle</li>
+            <li>Mysticorn</li>
+            <li>Tartinella</li>
+            <li>Poumpa</li>
+            <li>Rigolax</li>
+            <li>Cacaoté</li>
+            <li>Marseillette</li>
+            <li>Ridiculous</li>
+            <li>Lafripouille</li>
+        </ul>
+
+        <p class="important">Attention : Une fois choisi, le prénom sera définitif pendant 14 ans.</p>
+        <p>Une nouvelle carte d'identité sera envoyée par la Poste sous 2 à 3 jours ouvrés.</p>
+
+        <div class="formulaire">
+            <h2>Formulaire officiel</h2>
+            <form id="prenom-form" onsubmit="handleSubmit(event)">
+                <label for="prenom">Je choisis officiellement mon nouveau prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+
+                <label for="date_naissance_enfant">Date de naissance de l'enfant :</label>
+                <input type="text" id="date_naissance_enfant" name="date_naissance_enfant" required>
+
+                <label for="lieu_naissance_enfant">Lieu de naissance de l'enfant :</label>
+                <input type="text" id="lieu_naissance_enfant" name="lieu_naissance_enfant" required>
+
+                <input type="submit" value="Envoyer au Ministère">
+            </form>
+        </div>
+    </div>
+
+    <div id="success-message" class="success-message" style="display:none; text-align:center;">
+        <img id="success-gif" src="" alt="gif rigolo" style="max-width:200px; display:block; margin:auto;">
+        <p id="success-text" style="font-size: 18px; margin-top: 15px;"></p>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const main = document.getElementById("main");
+            main.style.display = "none";
+            const prenom = document.getElementById("prenom").value.trim();
+            const message = document.getElementById("success-text");
+            const gif = document.getElementById("success-gif");
+            const container = document.getElementById("success-message");
+
+            message.innerHTML = `
+            🎉 Félicitations <strong>${prenom}</strong> choisi ! <br><br>
+            Tu viens d’adopter un prénom d’exception, digne des plus grandes légendes du royaume des farfelus. <br>
+            Prépare-toi à vivre des aventures incroyables en tant que <strong>${prenom} le/la Magnifique</strong> ! <br><br>
+            🐟 Joyeux Premier Avril ! Vive la République des Rigolades !`;
+
+            gif.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnZrbjN2YW4zMTh4MGNqNGd6YmY5Y3Zremk0cnJqcng4YmhsN3RwMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fu8xrVesOBxK4ahoSK/giphy.gif";
+
+            container.style.opacity = 0;
+            container.style.display = "block";
+
+            let opacity = 0;
+            const fadeIn = setInterval(() => {
+                if (opacity >= 1) clearInterval(fadeIn);
+                opacity += 0.05;
+                container.style.opacity = opacity;
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>
